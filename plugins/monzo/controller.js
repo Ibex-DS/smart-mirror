@@ -49,7 +49,6 @@ function Monzo($scope, $http, $q, $interval) {
 
         $http(req).then((res) => {
             $scope.monzoPots = res.data.pots;
-            console.log($scope.monzoPots);
         });
     }
 
