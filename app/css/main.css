@@ -553,3 +553,8 @@ ul.calendar {
     font-size: 20px;
     margin-bottom: 55px;
 }
+
+.Monzo-Logo > svg {
+    width: 5em;
+    height: auto;
+}

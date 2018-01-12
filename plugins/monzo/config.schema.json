@@ -1,0 +1,37 @@
+{
+    "schema": {
+        "monzo": {
+            "type": "object",
+            "title": "Monzo API Settings",
+            "properties": {
+                "token": {
+                    "default": "",
+                    "type": "password",
+                    "title": "API Token (https://developers.monzo.com/)",
+                    "required": true
+                },
+                "refreshTime": {
+                    "default": 500,
+                    "type": "integer",
+                    "title": "Update Time (Seconds)",
+                    "required": false
+                },
+                "potsEnabled": {
+                    "default": true,
+                    "type": "boolean",
+                    "title": "Enable Display of Pots?",
+                    "required": false
+                }
+            }
+        }
+    },
+    "form":[
+      {
+        "key":"monzo",
+        "type":"fieldset",
+        "title":"Monzo API Settings",
+        "expandable":false,
+        "order":-100
+      }
+    ]
+}
