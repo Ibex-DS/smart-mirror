@@ -7,20 +7,38 @@
                 "token": {
                     "default": "",
                     "type": "password",
-                    "title": "API Token (https://developers.monzo.com/)",
+                    "title": "0Auth2 Token",
+                    "required": false
+                },
+                "refresh_token": {
+                    "default": "",
+                    "type": "password",
+                    "title": "0Auth2 Refresh Token",
+                    "required": false
+                },
+                "client_id": {
+                    "default": "",
+                    "type": "string",
+                    "title": "0Auth2 Client ID",
+                    "required": true
+                },
+                "client_secret": {
+                    "default": "",
+                    "type": "password",
+                    "title": "0Auth2 Client Secret",
                     "required": true
                 },
                 "refreshTime": {
                     "default": 500,
                     "type": "integer",
                     "title": "Update Time (Seconds)",
-                    "required": false
+                    "required": true
                 },
                 "potsEnabled": {
                     "default": true,
                     "type": "boolean",
                     "title": "Enable Display of Pots?",
-                    "required": false
+                    "required": true
                 }
             }
         }

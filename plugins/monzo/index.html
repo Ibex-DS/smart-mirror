@@ -1,11 +1,16 @@
 <div ng-controller="Monzo" class="Monzo fade">
     <ng-include src="'plugins/monzo/monzo_hrz_drkbg.svg'" class="Monzo-Logo"></ng-include>
-    <div data-ng-repeat="account in monzoAccounts">
-        <span class="fade" ng-bind="account.description"></span>
-        <span class="fade" ng-bind="monzoBalances[account.id].balance / 100 | currency:'£'"></span>        
+    <div ng-if="error">
+        <p ng-bind="error"></p>
     </div>
-    <div data-ng-repeat="pot in monzoPots" ng-if="config.monzo.potsEnabled">
-        <span class="fade" ng-bind="pot.name"></span>
-        <span class="fade" ng-bind="pot.balance / 100 | currency:'£'"></span>
+    <div ng-if="!error">
+        <div data-ng-repeat="account in monzoAccounts">
+            <span class="fade" ng-bind="account.description"></span>
+            <span class="fade" ng-bind="monzoBalances[account.id].balance / 100 | currency:'£'"></span>        
+        </div>
+        <div data-ng-repeat="pot in monzoPots" ng-if="config.monzo.potsEnabled">
+            <span class="fade" ng-bind="pot.name"></span>
+            <span class="fade" ng-bind="pot.balance / 100 | currency:'£'"></span>
+        </div>
     </div>
 </div>
