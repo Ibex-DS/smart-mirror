@@ -148,7 +148,7 @@ function Monzo($scope, $http, $q, $interval) {
 
     function updateInterface() {
         if ($scope.error) {
-            if (!status && config.monzo.refresh_token) {
+            if (!config.monzo.refresh_token) {
                 expressServer();
             } else {
                 refreshToken();
