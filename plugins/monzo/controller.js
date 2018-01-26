@@ -62,6 +62,7 @@ function Monzo($scope, $http, $q, $interval) {
     }
 
     function refreshToken() {
+        let q = $q.defer;
         const req = {
             method: "POST",
             url: `https://api.monzo.com/oauth2/token`,
@@ -84,7 +85,10 @@ function Monzo($scope, $http, $q, $interval) {
             config.monzo.token = token.data.access_token;
             config.monzo.refresh_token = token.data.refresh_token;
             updateConfig();
+            q.resolve();
         });
+
+        return q.promise;
     }
 
     function updateAccounts() {
@@ -104,6 +108,9 @@ function Monzo($scope, $http, $q, $interval) {
             return q.resolve();
         }).catch((err) => {
             $scope.error = err.data.message;
+            if (config.monzo.refresh_token) {
+                refreshToken().then(() => {});
+            }
             return q.resolve();
         });
 
@@ -148,6 +155,7 @@ function Monzo($scope, $http, $q, $interval) {
 
     function updateInterface() {
         if ($scope.error) {
+            console.log();
             if (!config.monzo.refresh_token) {
                 expressServer();
             } else {
@@ -160,6 +168,8 @@ function Monzo($scope, $http, $q, $interval) {
             if (config.monzo.potsEnabled) {
                 updatePots();
             }
+        }).catch(() => {
+            updateInterface();
         });
     }
 
